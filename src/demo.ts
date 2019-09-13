@@ -1,7 +1,8 @@
-export const generateConfig = () => {
-  return {
-    server: "http://localhost",
-    port: 80,
-    time: new Date()
-  };
+import axios from "axios";
+
+export const fetchData = () => {
+  return axios.get("/").then(res => res.data);
+};
+export const getNumber = () => {
+  return 123;
 };

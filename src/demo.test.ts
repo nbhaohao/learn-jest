@@ -1,22 +1,12 @@
-import { generateConfig } from "./demo";
-
-test("测试 generateConfig 函数", () => {
-  expect(generateConfig()).toMatchSnapshot({
-    time: expect.any(Date)
+jest.mock("./demo");
+import { fetchData } from "./demo";
+const { getNumber } = jest.requireActual("./demo");
+test("fetchData 测试", () => {
+  return fetchData().then(data => {
+    expect(eval(data)).toBe("123");
   });
 });
 
-test("测试 generateConfig 函数 inline snapshot", () => {
-  expect(generateConfig()).toMatchInlineSnapshot(
-    {
-      time: expect.any(Date)
-    },
-    `
-    Object {
-      "port": 80,
-      "server": "http://localhost",
-      "time": Any<Date>,
-    }
-  `
-  );
+test("getNumber 测试", () => {
+  return expect(getNumber()).toBe(123);
 });

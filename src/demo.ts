@@ -1,7 +1,7 @@
-import { Util } from "./util";
+import $ from "jquery";
 
-export const demoFunction = (a: any, b: any) => {
-  const util = new Util();
-  util.a(a);
-  util.b(b);
+const addDivToBody = () => {
+  $("body").append("<div/>");
 };
+
+export { addDivToBody };
